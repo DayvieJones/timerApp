@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import "./Button.css";
 
 interface ButtonProps {
-  buttonName: string;
+  buttonContent: string;
+  handleOnClickEvent: () => void;
+  isLightMode: boolean;
 }
 
-const Button = ({ buttonName }: ButtonProps) => {
-  const [state, setState] = useState(0);
-
-  function handleButtonChangeEvent() {
-    setState(state + 1);
-  }
-
-  return <button onClick={handleButtonChangeEvent}>{buttonName}</button>;
-};
+function Button({
+  buttonContent,
+  handleOnClickEvent,
+  isLightMode,
+}: ButtonProps) {
+  return (
+    <button
+      onClick={handleOnClickEvent}
+      className={isLightMode ? "light-mode" : "dark-mode"}
+    >
+      {buttonContent}
+    </button>
+  );
+}
 
 export default Button;

@@ -9,3 +9,15 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+.light-mode button {
+  background-color: var(--backgroundColorBright);
+  color: var(--textColorDark);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode button {
+  background-color: var(--backgroundColorDark);
+  color: var(--textColorBright);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}

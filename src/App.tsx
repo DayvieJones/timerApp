@@ -1,30 +1,31 @@
 import { useState } from "react";
 import "./App.css";
-
-function useFormInput() {
-  const [value, setValue] = useState<number>(0);
-
-  function handleInputChangeEvent(event: React.ChangeEvent<HTMLInputElement>) {
-    setValue(Number(event.target.value));
-  }
-
-  return { value, handleInputChangeEvent };
-}
+import Timer from "./components/Timer";
+import Button from "./components/Button/Button";
 
 function App() {
-  const { value, handleInputChangeEvent } = useFormInput();
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  function toggleMode() {
+    setIsLightMode(!isLightMode);
+  }
 
   return (
-    <div className="App">
-      <p className="time_2">Set time</p>
-      <input type="number" value={value} onChange={handleInputChangeEvent} />
-      <br />
-      <span className="time_1 bold">Time left: </span>
-      <span className="time_1 bold">{value.toFixed(3)}s</span>
-      <div className="button-row">
-        <button>Start</button>
-        <button>Pause</button>
-        <button>Reset</button>
+    <div className={`app ${isLightMode ? "light-mode" : "dark-mode"}`}>
+      <div className="navbar">
+        <Button
+          isLightMode={isLightMode}
+          handleOnClickEvent={toggleMode}
+          buttonContent={isLightMode ? "Dark Mode" : "Light Mode"}
+        />
+      </div>
+      <div className="display-timer">
+        <Timer isLightMode={isLightMode} />
+        <Timer isLightMode={isLightMode} />
+        <Timer isLightMode={isLightMode} />
+        <Timer isLightMode={isLightMode} />
+        <Timer isLightMode={isLightMode} />
+        <Timer isLightMode={isLightMode} />
       </div>
     </div>
   );
