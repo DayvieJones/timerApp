@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "./Button/Button";
-import Input from "./Input/Input";
+
 import TimeLeftSpan from "./views/components/TimeLeft/TimeLeft";
 import "./Timer.css";
+import Input from "./Input/Input";
+import Button from "./Button/Button";
 
 interface TimerProps {
   isLightMode: boolean;
