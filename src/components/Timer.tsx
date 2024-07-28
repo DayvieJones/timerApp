@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import TimeLeftSpan from "./views/components/TimeLeft/TimeLeft";
+import TimeLeft from "./views/components/TimeLeft/TimeLeft";
 import "./Timer.css";
 import Input from "./Input/Input";
 import Button from "./Button/Button";
@@ -83,7 +83,7 @@ function Timer({ isLightMode }: TimerProps) {
           handleInputChangeEvent={handleInputChangeEvent}
         />
         <br />
-        <TimeLeftSpan secondsLeft={secondsLeft} />
+        <TimeLeft secondsLeft={secondsLeft} />
         <div className="button-row">
           <Button
             isLightMode={isLightMode}
