@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Timer from "./components/Timer";
-import Button from "./components/Button/Button";
+import Button from "./components/button/Button";
 
 function App() {
   const [isLightMode, setIsLightMode] = useState(false);
