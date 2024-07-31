@@ -16,7 +16,7 @@ function Timer({ isLightMode }: TimerProps) {
   const [stop, setStop] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const intervalId = useRef<number | undefined>(undefined);
-  const intervalRefreshTime = 50; // in Millisekunden
+  const intervalRefreshTime = 50; // millisec
   let secondsLeft = inputValue - (now - startTime) / 1000;
 
   const handleInputChangeEvent = (
@@ -24,6 +24,7 @@ function Timer({ isLightMode }: TimerProps) {
   ) => {
     const newInputValue = Number(event.target.value);
     if (newInputValue >= 0) {
+      handleReset();
       setInputValue(newInputValue);
     } else alert("Negative values are not allowed");
   };
@@ -85,6 +86,7 @@ function Timer({ isLightMode }: TimerProps) {
       <div className="timer-body">
         <p className="time_2">Set time</p>
         <Input
+          disable={isRunning}
           isLightMode={isLightMode}
           inputValue={inputValue}
           handleInputChangeEvent={handleInputChangeEvent}
