@@ -1,11 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function FirstRoute() {
-  return (
-    <div>
-      First Route <Outlet />
-    </div>
-  );
+  const { itemID } = useParams();
+
+  return <div>First Route {itemID}</div>;
 }
 
 export default FirstRoute;

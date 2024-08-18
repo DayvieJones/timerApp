@@ -1,15 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import TimeLeft from "./views/components/TimeLeft/TimeLeft";
 import "./Timer.css";
 import Input from "./input/Input";
 import Button from "./button/Button";
+import { LightModeContext } from "./context/LightModeContext";
 
-interface TimerProps {
-  isLightMode: boolean;
-}
-
-function Timer({ isLightMode }: TimerProps) {
+function Timer() {
   const [inputValue, setInputValue] = useState(0);
   const [startTime, setStartTime] = useState(0);
   const [now, setNow] = useState(0);
@@ -18,6 +15,7 @@ function Timer({ isLightMode }: TimerProps) {
   const intervalId = useRef<number | undefined>(undefined);
   const intervalRefreshTime = 50; // millisec
   let secondsLeft = inputValue - (now - startTime) / 1000;
+  const { isLightMode } = useContext(LightModeContext);
 
   const handleInputChangeEvent = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -94,21 +92,9 @@ function Timer({ isLightMode }: TimerProps) {
         <br />
         <TimeLeft secondsLeft={secondsLeft} />
         <div className="button-row">
-          <Button
-            isLightMode={isLightMode}
-            handleOnClickEvent={handleStart}
-            buttonContent={"Start"}
-          />
-          <Button
-            isLightMode={isLightMode}
-            handleOnClickEvent={handleStop}
-            buttonContent={"Stop"}
-          />
-          <Button
-            isLightMode={isLightMode}
-            handleOnClickEvent={handleReset}
-            buttonContent={"Reset"}
-          />
+          <Button handleOnClickEvent={handleStart} buttonContent={"Start"} />
+          <Button handleOnClickEvent={handleStop} buttonContent={"Stop"} />
+          <Button handleOnClickEvent={handleReset} buttonContent={"Reset"} />
         </div>
       </div>
     </div>

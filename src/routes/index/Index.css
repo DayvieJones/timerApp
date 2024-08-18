@@ -1,0 +1,7 @@
+.indexPage {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
