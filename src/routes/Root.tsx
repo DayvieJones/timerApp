@@ -1,32 +1,22 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App";
+import FirstRoute from "./firstroute/FirstRoute";
+import SecondRoute from "./secondroute/SecondRoute";
 import ErrorPage from "./errorpage/ErrorPage";
-import NoMatch from "./errorpage/NoMatch";
-import Index from "./index/Index";
-import { LightModeContext } from "../components/context/LightModeContext";
-import { useState } from "react";
 
 function Root() {
-  const [isLightMode, setLightMode] = useState(false);
-
   const router = createBrowserRouter([
     {
       path: "timerApp",
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <Index /> },
-        { path: ":itemID", element: <Index /> },
+        { path: "", element: <FirstRoute /> },
         { path: "main", element: <App /> },
-        { path: "*", element: <NoMatch /> },
+        { path: "second", element: <SecondRoute /> },
       ],
     },
   ]);
-
-  return (
-    <LightModeContext.Provider value={{ isLightMode, setLightMode }}>
-      <RouterProvider router={router} />
-    </LightModeContext.Provider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default Root;
