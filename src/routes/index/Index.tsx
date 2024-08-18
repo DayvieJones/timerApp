@@ -12,7 +12,7 @@ function Index() {
     <div className="indexPage">
       <h2 className="indexPageText">Wähle eine Seite</h2>
       <br />
-      <Link to="./main">
+      <Link to="./NoMatch">
         <button>Hier</button>
       </Link>
       <Button
